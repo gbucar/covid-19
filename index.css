@@ -1,0 +1,14 @@
+#tooltip {
+    position: absolute;
+    background-color: grey;
+    padding: 5px;
+    border-radius: 5px;
+    white-space: pre;
+}
+rect:hover{
+    stroke: white;
+    stroke-width: 1px;
+}
+#title {
+    text-align: center;
+}
