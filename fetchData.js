@@ -10,9 +10,10 @@ fetch("https://api.sledilnik.org/api/stats")
         let dif = (average[average.length-1][0]-average[average.length-8][0])/average[average.length-1][0]
         let a = average[average.length-1][0]
         let date = average[average.length-1][1]
+        let r = 1.03
 
         while(a>600&&a<2000){
-            a+=dif*a
+            a *= r
             average.push([a,date.setDate(date.getDate()+1)])
         }
         console.log(average)
