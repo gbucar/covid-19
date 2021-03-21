@@ -7,14 +7,13 @@ fetch("https://api.sledilnik.org/api/stats")
         let h = window.innerHeight-padding
         data.pop()
         let average = data.map((a,i,d)=>[Math.floor((d.slice(i-6>0?i-6:0,i+1).reduce((b,a)=>(a.cases.confirmedToday?a.cases.confirmedToday:0) + b,0)/7)), new Date(a.year, a.month-1, a.day)])
-        let dif = (average[average.length-1][0]-average[average.length-8][0])/average[average.length-1][0]
         let a = average[average.length-1][0]
         let date = average[average.length-1][1]
         let r = 1.03
 
-        while(a>600&&a<2000){
+        while(a>600&&a<1000){
             a *= r
-            average.push([a,date.setDate(date.getDate()+1)])
+            average.push([a,date.setDate(date.getDate()+1), true])
         }
         console.log(average)
         let info = d3.select("body")
@@ -39,6 +38,7 @@ fetch("https://api.sledilnik.org/api/stats")
             .data(average)
             .enter()
             .append("rect")
+            .attr("style", d => d[2]? "fill: blue" : "fill: black")
             .attr("x", (d,i)=>i*(w-padding)/average.length+padding)
             .attr("y", d=>h+yScale(d[0])-yScale(0)-padding)
             .attr("width", (d,i)=>(w-padding)/average.length)
