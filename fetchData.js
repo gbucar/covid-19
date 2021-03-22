@@ -11,7 +11,7 @@ fetch("https://api.sledilnik.org/api/stats")
         let date = average[average.length-1][1]
         let r = 1.16
 
-        while(a>600&&a<1000){
+        while(a>600&&a<2000){
             a *= r
             average.push([a,date.setDate(date.getDate()+1), true])
         }
