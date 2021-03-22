@@ -9,13 +9,13 @@ fetch("https://api.sledilnik.org/api/stats")
         let average = data.map((a,i,d)=>[Math.floor((d.slice(i-6>0?i-6:0,i+1).reduce((b,a)=>(a.cases.confirmedToday?a.cases.confirmedToday:0) + b,0)/7)), new Date(a.year, a.month-1, a.day)])
         let a = average[average.length-1][0]
         let date = average[average.length-1][1]
-        let r = 1.03
+        let r = 1.16
 
         while(a>600&&a<1000){
             a *= r
             average.push([a,date.setDate(date.getDate()+1), true])
         }
-        console.log(average)
+
         let info = d3.select("body")
             .append("div")  
             .attr("id", "info")
