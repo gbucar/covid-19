@@ -1,3 +1,2 @@
 # covid-19
-it shows, when epidemic will end in Slovenia.
-It's not accurate though
+It's supposed to show, how epidemic evolves in Slovenia. 
